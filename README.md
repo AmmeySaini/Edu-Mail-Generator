@@ -9,7 +9,7 @@ Generate Free Edu Mail(s) within minutes
 ## ***Installation***
 
 	  python3 setup.py
-It will download all required packages and webdrivers automatically based on your browsers versions (You need not do install seprately)
+It will download all required packages and webdrivers automatically based on your browsers versions (You need not to install them seprately)
 
 ## ***Usage***
 
