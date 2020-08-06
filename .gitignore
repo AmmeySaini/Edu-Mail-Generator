@@ -1,0 +1,7 @@
+#### Cache ####
+__pycache__/
+*.py[cod]
+
+#### Debug Files ####
+play.py
+play1.py
