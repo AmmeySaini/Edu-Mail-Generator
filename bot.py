@@ -4,6 +4,7 @@ import string
 import random
 import sys
 import colorama
+import platform
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.keys import Keys
@@ -23,6 +24,8 @@ from __colors__.colors import *
 ######## I'm not responsible for any loss or damage ########
 ######## caused to you using this script ########
 ######## Github Repo - https://git.io/JJisT/ ########
+os_name = platform.system()
+print("YOUR OS: ", os_name)
 
 def postFix(n):
     range_start = 10**(n-1)
@@ -68,12 +71,18 @@ def start_bot(start_url, email, college, collegeID):
     try:
         # For Chrome
         if typex == 'chrome':
-            driver = webdriver.Chrome(executable_path=r'./webdriver/chromedriver')
-        # For Firefox
+            if os_name == "Darwin":
+            	driver = webdriver.Chrome(executable_path=r'./webdriver/chromedriver')
+            else:
+                driver = webdriver.Chrome(executable_path=r'./webdriver/chromedriver.exe')     
+ # For Firefox
         elif typex == 'firefox':
             cap = DesiredCapabilities().FIREFOX
             cap['marionette'] = True
-            driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver')
+            if os_name == 'Darwin':
+                driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver')
+            else:
+                driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver.exe')
         elif typex == '':
             print(fr + 'Error - Run setup.py first')
             exit()
