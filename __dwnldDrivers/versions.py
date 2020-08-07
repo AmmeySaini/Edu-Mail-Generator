@@ -113,11 +113,14 @@ def get_chrome_version():
         except:
             return None
     elif platform == 'win':
-        process = subprocess.Popen(
-            ['reg', 'query', 'HKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon', '/v', 'version'],
-            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, stdin=subprocess.DEVNULL
-        )
-        version = process.communicate()[0].decode('UTF-8').strip().split()[-1]
+        try:
+            process = subprocess.Popen(
+                ['reg', 'query', 'HKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon', '/v', 'version'],
+                stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, stdin=subprocess.DEVNULL
+            )
+            version = process.communicate()[0].decode('UTF-8').strip().split()[-1]
+        except:
+            return None
     else:
         return
     try:
