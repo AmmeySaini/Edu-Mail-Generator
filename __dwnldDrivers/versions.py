@@ -131,12 +131,12 @@ def get_major_version(version):
     """
     return version.split('.')[0]
 
-def get_chrome_driver_v(verion):
+def get_chrome_driver_v(version):
     """
     :param version: the version of chrome
     :return: the chromedriver version needed
     """
-    return requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_83').text
+    return requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_' + str(version)).text
 
 def get_chrome_driver_dwnld_url(version):
     """
