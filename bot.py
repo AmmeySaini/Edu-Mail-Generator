@@ -75,7 +75,7 @@ def start_bot(start_url, email, college, collegeID):
             cap['marionette'] = True
             driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver.exe')
         elif typex == '':
-            print('Run setup.py first')
+            print(fr + 'Error - Run setup.py first')
             exit()
     except Exception as e:
         time.sleep(0.4)
@@ -410,6 +410,10 @@ def start_bot(start_url, email, college, collegeID):
 
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fy + 'Details Progress - 1/8', end='')
 
+        WebDriverWait(driver, 60).until(
+            EC.presence_of_element_located((By.NAME, 'application.termId'))
+        )
+
         dropdown_menu = Select(driver.find_element_by_name('application.termId'))
         dropdown_menu.select_by_index(1)
 
@@ -496,6 +500,11 @@ def start_bot(start_url, email, college, collegeID):
         ).click()
 
         time.sleep(0.7)
+
+        bad_states = ['AA', 'AE', 'AP']
+
+        if stateAddress in bad_states:
+            stateAddress = 'CA'
 
         WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable(
@@ -826,6 +835,23 @@ def start_bot(start_url, email, college, collegeID):
 
         elif collegeID == 3:
 
+            try:
+                element = WebDriverWait(driver, 60).until(
+                    EC.presence_of_element_located((By.ID, "_supp_MENU_1"))
+                )
+            except:
+                pass
+            Select(driver.find_element_by_id("_supp_MENU_1")).select_by_value('ENG')
+            time.sleep(2)
+            Select(driver.find_element_by_id("_supp_MENU_5")).select_by_value('N')
+            Select(driver.find_element_by_id("_supp_MENU_6")).select_by_value('N')
+            Select(driver.find_element_by_id("_supp_MENU_4")).select_by_value('OPT2')
+            driver.find_element_by_id("_supp_CHECK_5").click()
+            time.sleep(2)
+            driver.find_element_by_name("_eventId_continue").click()
+
+        elif collegeID == 4:
+
             time.sleep(2)
             driver.find_element_by_id("YESNO_1_yes").click()
             driver.find_element_by_id("YESNO_2_yes").click()
@@ -881,23 +907,6 @@ def start_bot(start_url, email, college, collegeID):
             driver.find_element_by_id("_supp_TEXT_4").send_keys("Nulled")
             time.sleep(2)
 
-            driver.find_element_by_name("_eventId_continue").click()
-
-        elif collegeID == 4:
-
-            try:
-                element = WebDriverWait(driver, 60).until(
-                    EC.presence_of_element_located((By.ID, "_supp_MENU_1"))
-                )
-            except:
-                pass
-            Select(driver.find_element_by_id("_supp_MENU_1")).select_by_value('ENG')
-            time.sleep(2)
-            Select(driver.find_element_by_id("_supp_MENU_5")).select_by_value('N')
-            Select(driver.find_element_by_id("_supp_MENU_6")).select_by_value('N')
-            Select(driver.find_element_by_id("_supp_MENU_4")).select_by_value('OPT2')
-            driver.find_element_by_id("_supp_CHECK_5").click()
-            time.sleep(2)
             driver.find_element_by_name("_eventId_continue").click()
         
         print(fg + ' (Success)')
