@@ -1,7 +1,12 @@
 import sys
 import os
 import subprocess
-import requests
+try:
+    import requests
+except ImportError:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'requests'])
+finally:
+    import requests
 import urllib, time
 from io import BytesIO
 from zipfile import ZipFile
