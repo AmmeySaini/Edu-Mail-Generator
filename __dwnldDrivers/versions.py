@@ -26,6 +26,8 @@ def os_arch():
         os_arch = output.split()[1].decode('utf-8').replace('-bit', '')
     else:
         output = subprocess.check_output(['uname', '-m'])
+        if type(output) != str:
+            output = output.decode('utf-8')
         if 'x86_64' in output:
             os_arch = '64'
         else:
@@ -66,11 +68,17 @@ def get_firefox_version():
     """
     platform, _ = get_platform_architecture_firefox()
     if platform == 'linux':
-        with subprocess.Popen(['firefox', '--version'], stdout=subprocess.PIPE) as proc:
-            version = proc.stdout.read().decode('utf-8').replace('Mozilla Firefox', '').strip()
+        try:
+            with subprocess.Popen(['firefox', '--version'], stdout=subprocess.PIPE) as proc:
+                version = proc.stdout.read().decode('utf-8').replace('Mozilla Firefox', '').strip()
+        except:
+            return None
     elif platform == 'mac':
-        process = subprocess.Popen(['/Applications/Firefox.app/Contents/MacOS/firefox', '--version'], stdout=subprocess.PIPE)
-        version = process.communicate()[0].decode('UTF-8').replace('Mozilla Firefox', '').strip()
+        try:
+            process = subprocess.Popen(['/Applications/Firefox.app/Contents/MacOS/firefox', '--version'], stdout=subprocess.PIPE)
+            version = process.communicate()[0].decode('UTF-8').replace('Mozilla Firefox', '').strip()
+        except:
+            return None
     elif platform == 'win':
         path1 = 'C:\\PROGRA~1\\Mozilla Firefox\\firefox.exe'
         path2 = 'C:\\PROGRA~2\\Mozilla Firefox\\firefox.exe'
@@ -92,12 +100,18 @@ def get_chrome_version():
     """
     platform, _ = get_platform_architecture_chrome()
     if platform == 'linux':
-        with subprocess.Popen(['chromium-browser', '--version'], stdout=subprocess.PIPE) as proc:
-            version = proc.stdout.read().decode('utf-8').replace('Chromium', '').strip()
-            version = version.replace('Google Chrome', '').strip()
+        try:
+            with subprocess.Popen(['google-chrome', '--version'], stdout=subprocess.PIPE) as proc:
+                version = proc.stdout.read().decode('utf-8').replace('Chromium', '').strip()
+                version = version.replace('Google Chrome', '').strip()
+        except:
+            return None
     elif platform == 'mac':
-        process = subprocess.Popen(['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--version'], stdout=subprocess.PIPE)
-        version = process.communicate()[0].decode('UTF-8').replace('Google Chrome', '').strip()
+        try:
+            process = subprocess.Popen(['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--version'], stdout=subprocess.PIPE)
+            version = process.communicate()[0].decode('UTF-8').replace('Google Chrome', '').strip()
+        except:
+            return None
     elif platform == 'win':
         process = subprocess.Popen(
             ['reg', 'query', 'HKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon', '/v', 'version'],
@@ -106,6 +120,10 @@ def get_chrome_version():
         version = process.communicate()[0].decode('UTF-8').strip().split()[-1]
     else:
         return
+    try:
+        version = version.split(' ')[0]
+    except:
+        pass
     return version
 
 def get_latest_geckodriver_version():

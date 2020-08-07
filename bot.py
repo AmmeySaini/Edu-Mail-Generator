@@ -68,12 +68,12 @@ def start_bot(start_url, email, college, collegeID):
     try:
         # For Chrome
         if typex == 'chrome':
-            driver = webdriver.Chrome(executable_path=r'./webdriver/chromedriver.exe')
+            driver = webdriver.Chrome(executable_path=r'./webdriver/chromedriver')
         # For Firefox
         elif typex == 'firefox':
             cap = DesiredCapabilities().FIREFOX
             cap['marionette'] = True
-            driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver.exe')
+            driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver')
         elif typex == '':
             print(fr + 'Error - Run setup.py first')
             exit()
@@ -397,7 +397,8 @@ def start_bot(start_url, email, college, collegeID):
         ).click()
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fy + 'Account Progress - 3/3' + fg + ' (Success)')
         fp = open('myccAcc.txt', 'a')
-        fp.write('Email - ' + email + ' Password - ' + pwd + ' UserName - ' + userName + ' First Name - ' + firstName + ' Middle Name - ' + middleName + ' Last Name - ' + LastName + ' College - ' + college +'\n\n')
+        fp.write('Email - ' + email + ' Password - ' + pwd + ' UserName - ' + userName + ' First Name - ' + firstName + ' Middle Name - ' + middleName + ' Last Name - ' + LastName + ' College - ' + college + ' Pin - ' + str(pin) +'\n\n')
+        fp.close()
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fg + 'Account Created Successfully, Details saved in myccAcc.txt, Filling Application Form Now')
 
         time.sleep(1)
