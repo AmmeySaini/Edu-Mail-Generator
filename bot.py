@@ -397,7 +397,8 @@ def start_bot(start_url, email, college, collegeID):
         ).click()
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fy + 'Account Progress - 3/3' + fg + ' (Success)')
         fp = open('myccAcc.txt', 'a')
-        fp.write('Email - ' + email + ' Password - ' + pwd + ' UserName - ' + userName + ' First Name - ' + firstName + ' Middle Name - ' + middleName + ' Last Name - ' + LastName + ' College - ' + college + ' Pin - ' + str(pin) +'\n\n')
+        birthDay = str(randomMonth) + '/' + str(randomDay) + '/' + str(randomYear)
+        fp.write('Email - ' + email + ' Password - ' + pwd + ' UserName - ' + userName + ' First Name - ' + firstName + ' Middle Name - ' + middleName + ' Last Name - ' + LastName + ' College - ' + college + ' Pin - ' + str(pin) + ' Birthday - ' + birthDay +'\n\n')
         fp.close()
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fg + 'Account Created Successfully, Details saved in myccAcc.txt, Filling Application Form Now')
 
