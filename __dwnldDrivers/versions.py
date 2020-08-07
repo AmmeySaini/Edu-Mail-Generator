@@ -188,7 +188,7 @@ def dwnld_tar_file(url, save_path):
 def setup_Chrome(version):
     mjVer = get_major_version(version)
     if mjVer != None:
-        print('Chrome verion - ' + str(mjVer))
+        print('Installed version - ' + str(mjVer))
         chromeDv = get_chrome_driver_v(mjVer)
         print('Chrome Driver Version Needed -', chromeDv)
         dwnldLink = get_chrome_driver_dwnld_url(chromeDv)
