@@ -71,9 +71,9 @@ def start_bot(start_url, email, college, collegeID):
             driver = webdriver.Chrome(executable_path=r'./webdriver/chromedriver')
         # For Firefox
         elif typex == 'firefox':
-            cap = DesiredCapabilities().FIREFOX
-            cap['marionette'] = True
-            driver = webdriver.Firefox(capabilities=cap, executable_path=r'./webdriver/geckodriver')
+            # cap = DesiredCapabilities().FIREFOX
+            # cap['marionette'] = True
+            driver = webdriver.Firefox(executable_path=r'./webdriver/geckodriver')
         elif typex == '':
             print(fr + 'Error - Run setup.py first')
             exit()
