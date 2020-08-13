@@ -392,9 +392,22 @@ def start_bot(start_url, email, college, collegeID):
 
     if solved == 1:
         time.sleep(2)
+
+        element = driver.find_element_by_id('accountFormSubmit')
+        desired_y = (element.size['height'] / 2) + element.location['y']
+        window_h = driver.execute_script('return window.innerHeight')
+        window_y = driver.execute_script('return window.pageYOffset')
+        current_y = (window_h / 2) + window_y
+        scroll_y_by = desired_y - current_y
+
+        driver.execute_script("window.scrollBy(0, arguments[0]);", scroll_y_by)
+
+        time.sleep(1)
+
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.ID, "accountFormSubmit"))
         ).click()
+
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fy + 'Account Progress - 3/3' + fg + ' (Success)')
         fp = open('myccAcc.txt', 'a')
         birthDay = str(randomMonth) + '/' + str(randomDay) + '/' + str(randomYear)
@@ -940,8 +953,20 @@ def start_bot(start_url, email, college, collegeID):
         print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fy + 'Sleeping for 30 seconds, HOLD ON !!')
 
         time.sleep(30)
+
+        element = driver.find_element_by_xpath('//*[@id="submit-application-button"]')
+        desired_y = (element.size['height'] / 2) + element.location['y']
+        window_h = driver.execute_script('return window.innerHeight')
+        window_y = driver.execute_script('return window.pageYOffset')
+        current_y = (window_h / 2) + window_y
+        scroll_y_by = desired_y - current_y
+
+        driver.execute_script("window.scrollBy(0, arguments[0]);", scroll_y_by)
+
+        time.sleep(1)
         
-        driver.find_element_by_xpath('//*[@id="submit-application-button"]').click()
+        # driver.find_element_by_xpath('//*[@id="submit-application-button"]').click()
+        element.click()
 
         time.sleep(2)
 
