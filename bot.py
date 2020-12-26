@@ -340,9 +340,18 @@ def start_bot(start_url, email, college, collegeID):
 
     time.sleep(1)
 
+    random.seed(10)
+    letters = string.ascii_lowercase
+
+    sec_ans1 = LastName + ''.join(random.choices(letters,k=4))
+
+    sec_ans2 = LastName + ''.join(random.choices(letters,k=4))
+
+    sec_ans3 = LastName + ''.join(random.choices(letters,k=4))
+
     WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.ID, 'inputSecurityAnswer1'))
-    ).send_keys("John")
+    ).send_keys(sec_ans1)
 
     time.sleep(1)
 
@@ -358,7 +367,7 @@ def start_bot(start_url, email, college, collegeID):
 
     WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.ID, 'inputSecurityAnswer2'))
-    ).send_keys(LastName)
+    ).send_keys(sec_ans2)
 
     time.sleep(1)
 
@@ -372,7 +381,7 @@ def start_bot(start_url, email, college, collegeID):
 
     WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.ID, 'inputSecurityAnswer3'))
-    ).send_keys("Doe")
+    ).send_keys(sec_ans3)
 
     print(fc + sd + '[' + fm + sb + '*' + fc + sd + '] ' + fr + 'Please fill the captcha in webdriver to proceed further')
 
@@ -510,8 +519,13 @@ def start_bot(start_url, email, college, collegeID):
 
         time.sleep(0.7)
 
+        # WebDriverWait(driver, 60).until(
+        #     EC.element_to_be_clickable((By.ID, 'inputHsAttendance'))
+        # ).click()
+
         WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.ID, 'inputHsAttendance1'))
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, '#inputHsAttendance option[value="1"]'))
         ).click()
 
         time.sleep(0.7)
