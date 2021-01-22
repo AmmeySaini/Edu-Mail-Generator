@@ -1,5 +1,8 @@
-# Edu-Mail-Generator
-Generate Free Edu Mail(s) within minutes
+# Edu-Mail-Generator-Mod
+For educational purposes
+All credits goes to the developer of this project --- (I just modified it)
+
+----- Generate Free Edu Mail(s) within minutes -----
 
 ## Only For Educational Purpose ##
 ## ***Requirements***
