@@ -9,7 +9,7 @@ def bannerTop():
 |  _| / _` | | | | | |\/| |/ _` | | | | |  _ / _ \ '_ \\
 | |__| (_| | |_| | | |  | | (_| | | | | |_| |  __/ | | |_
 |_____\__,_|\__,_| |_|  |_|\__,_|_|_|  \____|\___|_| |_(_)
-      Github Repo - https://git.io/JJisT/\n\n
+      Github Repo - https://git.io/JJisT/\n\n Modified by Imran
 '''
 
     bad_colors = ['BLACK', 'WHITE', 'LIGHTBLACK_EX', 'RESET']
