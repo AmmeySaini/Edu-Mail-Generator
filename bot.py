@@ -74,6 +74,11 @@ def start_bot(start_url, email, college, collegeID):
             # cap = DesiredCapabilities().FIREFOX
             # cap['marionette'] = True
             driver = webdriver.Firefox(executable_path=r'./webdriver/geckodriver')
+        elif typex == 'chrome_undetected':
+            import undetected_chromedriver.v2 as uc
+            driver = uc.Chrome()
+            # with driver:
+            #     driver.get('https://google.com')
         elif typex == '':
             print(fr + 'Error - Run setup.py first')
             exit()

@@ -37,6 +37,7 @@ def main():
     if chrome_ver != None:
         is_chrome_there = 1
         installed_pr.append('Chrome')
+        installed_pr.append('chrome_undetected (For easy captcha)')
         setup_Chrome(chrome_ver)
     else:
         is_chrome_there = 0
@@ -59,8 +60,9 @@ def main():
 
         if userInput <= len(installed_pr) and userInput > 0:
             selected = installed_pr[userInput - 1]
+            selectedx = selected.split(' ')[0]
             fp = open('prefBrowser.txt', 'w')
-            fp.write(selected.lower())
+            fp.write(selectedx.lower())
             inpErr = False
         else:
              print('Wrong id, Either input 1 or 2')
