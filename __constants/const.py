@@ -9,9 +9,9 @@ import random
 
 start_url = 'https://www.opencccapply.net/gateway/apply?cccMisCode='
 
-clg_ids = ['941', '311', '361', '233']
+clg_ids = ['941', '311', '361', '233', '851']
 
-allColleges = ['MSJC College', 'Contra Costa College', 'City College', 'Sacramento College']
+allColleges = ['MSJC College', 'Contra Costa College', 'City College', 'Sacramento College', 'Mt San Antonio']
 
 country_codes = ['855', '561', '800', '325', '330', '229']
 

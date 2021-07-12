@@ -650,18 +650,21 @@ def start_bot(start_url, email, college, collegeID):
             EC.element_to_be_clickable((By.ID, 'inputCaRes2YearsYes'))
         ).click()
 
-        element = driver.find_element_by_id('inputHomelessYouthNo')
-        desired_y = (element.size['height'] / 2) + element.location['y']
-        window_h = driver.execute_script('return window.innerHeight')
-        window_y = driver.execute_script('return window.pageYOffset')
-        current_y = (window_h / 2) + window_y
-        scroll_y_by = desired_y - current_y
+        try:
+            element = driver.find_element_by_id('inputHomelessYouthNo')
+            desired_y = (element.size['height'] / 2) + element.location['y']
+            window_h = driver.execute_script('return window.innerHeight')
+            window_y = driver.execute_script('return window.pageYOffset')
+            current_y = (window_h / 2) + window_y
+            scroll_y_by = desired_y - current_y
 
-        time.sleep(1)
+            time.sleep(1)
 
-        WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.ID, 'inputHomelessYouthNo'))
-        ).click()
+            WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.ID, 'inputHomelessYouthNo'))
+            ).click()
+        except:
+            pass
 
         time.sleep(1)
 
@@ -942,6 +945,78 @@ def start_bot(start_url, email, college, collegeID):
             driver.find_element_by_id("_supp_TEXT_3").send_keys("Nulled")
             driver.find_element_by_id("_supp_TEXT_4").send_keys("Nulled")
             time.sleep(2)
+
+            driver.find_element_by_name("_eventId_continue").click()
+        
+        elif collegeID == 5:
+            try:
+                element = WebDriverWait(driver, 60).until(
+                    EC.presence_of_element_located((By.ID, "_supp_MENU_1"))
+                )
+            except:
+                pass
+
+            FA = Select(driver.find_element_by_id('_supp_MENU_1'))
+            FA.select_by_value('B')
+            time.sleep(2)
+
+            PG = Select(driver.find_element_by_id('_supp_MENU_2'))
+            PG.select_by_value('B')
+            time.sleep(2)      
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_3'))
+            SM.select_by_value('A')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_4'))
+            SM.select_by_value('04')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_5'))
+            SM.select_by_value('B')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_6'))
+            SM.select_by_value('B')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_7'))
+            SM.select_by_value('B')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_8'))
+            SM.select_by_value('A')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_10'))
+            SM.select_by_value('F')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_11'))
+            SM.select_by_value('B')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_12'))
+            SM.select_by_value('A')
+            time.sleep(2)
+
+            SM = Select(driver.find_element_by_id('_supp_MENU_13'))
+            SM.select_by_value('B')
+            time.sleep(2)
+
+            driver.find_element_by_id("_supp_CHECK_4").click()
+
+            driver.find_element_by_id("YESNO_4_yes").click()
+
+            driver.find_element_by_id("YESNO_5_no").click()
+
+            driver.find_element_by_id("YESNO_6_no").click()
+
+            driver.find_element_by_id("YESNO_7_no").click()
+
+            driver.find_element_by_id("YESNO_8_no").click()
+
+            driver.find_element_by_id("YESNO_9_no").click()
 
             driver.find_element_by_name("_eventId_continue").click()
         
