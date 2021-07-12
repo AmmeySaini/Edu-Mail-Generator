@@ -13,7 +13,7 @@ def install(name):
 
 def main():
 
-    my_packages = ['requests', 'clint', 'faker', 'selenium', 'colorama']
+    my_packages = ['requests', 'clint', 'faker', 'selenium', 'colorama', 'undetected-chromedriver']
 
     installed_pr = [] 
     
