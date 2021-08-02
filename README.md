@@ -1,6 +1,9 @@
 # Edu-Mail-Generator
 Generate Free Edu Mail(s) within minutes
 
+## Update v0.2.8 ##
+Incapsula/VPN detected bypassed (No more VPN/Proxy Error) :)
+
 ## Update v0.2.7 ##
 Added Undetectable Chrome to easily verify recaptcha(No more boring and long verification), just install chrome/chromium on your machine and select chrome_undetected in setup.py and run the bot :)
 
